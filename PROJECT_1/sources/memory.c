@@ -1,3 +1,16 @@
+/********************************************
+*   Authors: Arundhathi Swami, Vignesh Jayaram
+*   Date Edited: 19 Sept 2016
+*
+*   File: memory.c
+*
+*   Description: Source file for memory manipulation
+*                -my_memmove
+*		 -my_memzero
+*		 -my_reverse
+*
+********************************************************/
+
 /* Program to implement memory related operations*/
 
 #include<stdio.h>
