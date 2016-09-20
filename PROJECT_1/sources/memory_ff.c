@@ -1,3 +1,18 @@
+/********************************************
+*   Authors: Arundhathi Swami, Vignesh Jayaram
+*   Date Edited: 19 Sept 2016
+*
+*   File: memory_ff.c
+*
+*   Description: Source file for memory manipulation 
+*		 for FRDMKL25z Board
+*                -my_memmove
+*		 -my_memzero
+*		 -my_reverse
+*
+********************************************************
+
+
 /* Program to implement memory related operations*/
 #pragma GCC poison printf
 
