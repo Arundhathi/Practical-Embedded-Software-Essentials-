@@ -1,3 +1,15 @@
+/********************************************
+*   Authors: Arundhathi Swami, Vignesh Jayaram
+*   Date Edited: 19 Sept 2016
+*
+*   File: main.c
+*
+*   Description: Source file for the final project report output
+*                -project_1_report
+*                -tests all utilities and softwares arbitrarily   
+*
+********************************************************/
+
 #include <stdio.h>
 #include <stdint.h>
 #include "memory.h"
