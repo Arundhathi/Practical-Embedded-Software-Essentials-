@@ -1,3 +1,17 @@
+/********************************************
+*   Authors: Arundhathi Swami, Vignesh Jayaram
+*   Date Edited: 19 Sept 2016
+*
+*   File: memory.h
+*
+*   Description: Header file for data manipulation 
+*		-my_memmove
+*		-my_memzero	
+*               -my_reverse
+*
+*
+********************************************************
+
 /*header for function called "memory"*/
 
 #ifndef memory_INCLUDED
