@@ -1,4 +1,14 @@
-/*Program to implement project requirements*/
+/********************************************
+*   Authors: Arundhathi Swami, Vignesh Jayaram
+*   Date Edited: 19 Sept 2016
+*
+*   File: data.c
+*
+*   Description: Source file for the final project report
+*                -project_1_report
+*
+********************************************************
+//*Program to implement project requirements*/
 
 #include<stdio.h>
 #include<stdint.h>
