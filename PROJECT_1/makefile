@@ -12,6 +12,10 @@ LINK = -Wl,-Map=project.map
 .PHONY : preprocess memory.i data.i project_1.i main.i asm-file main.s data.s memory.s project_1.s compile-all compile-all-BBB compile-all-FF build build-BBB build-FF %.o dependencies dependencies-FF object_size build-lib project upload all everything 
 
 CFLAGS = -Wall -g -O0 -std=c99 -c 
+CFLAGS1 = -mcpu=cortex-m0plus -Wall -g -O0 -std=c99 -c 
+CFLAGS2 = -mcpu=cortex-a8 -Wall -g -O0 -std=c99 -c 
+
+
 
 all: compile-all project
 
@@ -70,13 +74,13 @@ build : $(sources_c)
 	
 
 build-BBB : $(sources_c) 
-	$(BBB) -I headers $^ $(CFLAGS) > project $(objects_o)
+	$(BBB) -I headers $^ $(CFLAGS2) > project $(objects_o)
 	
 	
 	
 
 build-FF : $(sources_c) 
-	$(BBB) -I headers $^ $(CFLAGS) > project-FF $(objects_o)
+	$(BBB) -I headers $^ $(CFLAGS1) > project-FF $(objects_o)
 	size -d project-FF
 
 
