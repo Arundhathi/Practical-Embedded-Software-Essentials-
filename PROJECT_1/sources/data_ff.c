@@ -2,7 +2,7 @@
 *   Authors: Arundhathi Swami, Vignesh Jayaram
 *   Date Edited: 19 Sept 2016
 *
-*   File: data.c
+*   File: data_ff.c
 *
 *   Description: Source file for data manipulation 
 *		 for FRDMKL25z Board
