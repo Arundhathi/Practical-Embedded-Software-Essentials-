@@ -1,3 +1,19 @@
+/********************************************
+*   Authors: Arundhathi Swami, Vignesh Jayaram
+*   Date Edited: 19 Sept 2016
+*
+*   File: data.h
+*
+*   Description: Header file for data manipulation 
+*                -my_itoa
+*		 -my_atoi
+*		 -dump_memory
+*		 -big_to_little
+*		 -little_to_big
+*
+*
+********************************************************
+
 /* header  file for function called "data"*/
 
 #ifndef data_INCLUDED
