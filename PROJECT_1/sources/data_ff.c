@@ -1,3 +1,19 @@
+/********************************************
+*   Authors: Arundhathi Swami, Vignesh Jayaram
+*   Date Edited: 19 Sept 2016
+*
+*   File: data.c
+*
+*   Description: Source file for data manipulation 
+*		 for FRDMKL25z Board
+*                -my_itoa
+*		 -my_atoi
+*		 -dump_memory
+*		 -big_to_little
+*		 -little_to_big
+*
+********************************************************
+
 /*Program to implement data manipulations*/
 #pragma GCC poison printf
 
