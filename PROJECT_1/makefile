@@ -105,6 +105,10 @@ upload:
 build-lib: memory.c data.c  
 	ar cr libproject1.a $< 
 
+direct_link : $(sources_c) 
+	$(CC) -I headers $(CFLAGS) $^ 
+	ld -o $(objects_o) -lc
+
 clean:
 	rm -rf *.o *.map *.i *.s *.dep *.a project
 
