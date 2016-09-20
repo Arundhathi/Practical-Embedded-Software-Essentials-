@@ -75,18 +75,10 @@ build-BBB : $(sources_c)
 	
 	
 
-#build-FF : $(sources_c) 
-#	$(BBB) -I headers $^ $(CFLAGS) > project-FF $(objects_o)
-#	size -d project-FF
+build-FF : $(sources_c) 
+	$(BBB) -I headers $^ $(CFLAGS) > project-FF $(objects_o)
+	size -d project-FF
 
-build-FF : $(sources_c) $(headers_h)
-	$(FF) memory.c $(CFLAGS)
-	$(FF) data.c $(CFLAGS)
-	$(FF) project_1.c $(CFLAGS)
-	$(FF) main.c $(CFLAGS)
-	$(HOST) -o project $(objects_o) -Wl,-Map=project.map
-	$(FF) -M project $(objects_o) $(headers_h) -o project-FF.dep
-	size project
 
 
 dependencies : $(sources_c)
