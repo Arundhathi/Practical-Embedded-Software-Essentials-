@@ -4,7 +4,7 @@
 *
 *   File: project_1_ff.c
 *
-*   Description: Source file for final project_report 
+*   Description: Source file for final project 
 *		 for FRDMKL25z Board
 *                -project_1_report
 *
