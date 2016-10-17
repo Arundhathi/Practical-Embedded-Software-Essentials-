@@ -11,7 +11,7 @@
 *		 -big_to_little
 *		 -little_to_big
 *
-********************************************************
+********************************************************/
 
 
 /*Program to implement data manipulations*/
@@ -25,7 +25,6 @@ int8_t* my_itoa(int8_t *str, int32_t data, int32_t base)//function to convert in
 {
 
  uint32_t i=0;
- //uint32_t j=0;
  uint8_t neg=0;
  uint32_t l=0;
 

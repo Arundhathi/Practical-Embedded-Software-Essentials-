@@ -7,7 +7,7 @@
 *   Description: Source file for the final project report
 *                -project_1_report
 *
-********************************************************
+********************************************************/
 //*Program to implement project requirements*/
 
 #include<stdio.h>
@@ -94,7 +94,7 @@ temp_num=num1;
 printf("\n\n\nnum1 for data testing is: %d",num1);
 
 
-    //TESTING ITOA FUNCTION FOR BASE 10 and BASE 8
+    //TESTING ITOA FUNCTION FOR BASE 10, BASE 8 and BASE 16. 
 int8_t num_arr[20];
 
 while(temp_num!=0)
@@ -109,6 +109,18 @@ while(temp_num!=0)
   {
     printf("%d",num_arr[k]);
   }
+
+my_itoa(num_arr,num1,16);
+ printf("\nITOA_16:   the itoa output for base 16 is:");
+ for(k=0;k<count-1;k++)
+  {
+    if (num_arr[k]<10)		
+    printf("%d",num_arr[k]);
+    else
+    printf("%c", num_arr[k]);  
+
+}
+
 
  my_itoa(num_arr,num1,8);
  printf("\nITOA_8:   the itoa output for base 8 is:");
@@ -134,7 +146,7 @@ while(temp_num!=0)
     //TESTING DUMP FUNCTION
  uint8_t dump[6]={"12qB4/"};
  printf("\nDUMP:   Dumping 6 bytes of memory:");
- dump_memory((uint8_t*)dump,5);
+ dump_memory((uint8_t*)dump,6);
 
     //TESTING LITTLE_TO _BIG ENDIAN CONVERSION
  int32_t endian= 0x1234abcd;

@@ -12,7 +12,7 @@
 *		 -big_to_little
 *		 -little_to_big
 *
-********************************************************
+********************************************************/
 
 /*Program to implement data manipulations*/
 #pragma GCC poison printf

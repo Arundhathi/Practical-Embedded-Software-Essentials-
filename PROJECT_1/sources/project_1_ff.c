@@ -8,7 +8,7 @@
 *		 for FRDMKL25z Board
 *                -project_1_report
 *
-********************************************************
+********************************************************/
 
 /*Program to implement project requirements*/
 #pragma GCC poison printf
