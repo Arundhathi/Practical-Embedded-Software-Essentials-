@@ -1,5 +1,4 @@
 include sources1.mk
-#include headers1.mk
 
 HOST = gcc
 BBB = arm-linux-gnueabihf-gcc -DBBB
@@ -11,21 +10,24 @@ LINK = -Wl,-Map=project.map
 
 .PHONY : preprocess memory.i data.i project_1.i main.i asm-file main.s data.s memory.s project_1.s compile-all compile-all-BBB compile-all-FF build build-BBB build-FF %.o dependencies dependencies-FF object_size build-lib project upload all everything 
 
-CFLAGS = -Wall -g -O0 -std=c99 -c 
-CFLAGS1 = -mcpu=cortex-m0plus -Wall -g -O0 -std=c99 -c 
-CFLAGS2 = -mcpu=cortex-a8 -Wall -g -O0 -std=c99 -c 
+CFLAGS = -Wall -g -O0 -std=c99 
+CFLAGS1 = -mcpu=cortex-m0plus -Wall -g -O0 -std=c99 -specs=nosys.specs
+CFLAGS2 = -mcpu=cortex-a8 -Wall -g -O0 -std=c99  
 
+#ARCH = BBB
+#print: 
+	#echo $(ARCH)
+all: compile-all build project
 
-
-all: compile-all project
-
-everything: preprocess memory.i data.i project_1.i main.i asm-file compile-all compile-all-BBB build %.o dependencies object_size build-lib project
+everything: preprocess asm-file compile-all %.o build dependencies object_size build-lib project
 
 project : $(objects_o)
 	$(HOST) -I headers $^ -o project 
-
-preprocess : $(sources_c)
-	$(HOST) -I headers -E $^ > file.i
+	
+preprocesses : $(sources_c)
+	mkdir -p preprocess
+	$(HOST) -I headers -E $^ preprocess > file.i 
+	 
 
 memory.i : memory.c 
 	$(HOST) $(CFLAGS) -I headers -E $^ > memory.i
@@ -43,7 +45,7 @@ asm-file : main.c memory.c data.c project_1.c
 	$(HOST) -I headers $^ -S
 
 memory.s : memory.c 
-	$(HOST) -I headers $^ -S -o memory.s
+	$(BBB) -I headers $^ -S -o memory.s
 
 data.s : data.c 
 	$(HOST) -I headers $^ -S -o data.s
@@ -55,33 +57,36 @@ main.s : main.c
 	$(HOST) -I headers $^ -S -o main.s 
 
 compile-all : $(sources_c) 
-	$(HOST) -I headers $^ $(CFLAGS)
+	$(HOST) -I headers -c $^ $(CFLAGS)
 
 compile-all-BBB : $(sources_c) 
-	$(BBB) -I headers $^ $(CFLAGS)
+	$(BBB) -I headers -c $^ $(CFLAGS2)
 
-compile-all-FF : $(sources_c) 
-	$(FF) -I headers $^ $(CFLAGS)
+compile-all-FF : $(sources_c_ff) 
+	$(FF) -I headers_ff -c $^ $(CFLAGS1)
 
 %.o : %.c 
-	$(HOST) $(CFLAGS) -c $^ > %.o
+	$(HOST) -I headers $(CFLAGS) -c $^ > %.o
 
-build : $(sources_c)
-	$(HOST) -I headers $^ $(CFLAGS) > project $(objects_o)
+build : $(objects_o)
+#	$(HOST) -I headers $^ -c $(CFLAGS) 
 	$(HOST) -o project $(objects_o) $(LINK)
-	objdump -g project
+	objdump -g > dump 
 
 	
 
-build-BBB : $(sources_c) 
-	$(BBB) -I headers $^ $(CFLAGS2) > project $(objects_o)
+build-BBB : $(objects_o) 
+	$(BBB) -o project $(objects_o) $(LINK)
+	size -d project
 	
 	
 	
 
-build-FF : $(sources_c) 
-	$(BBB) -I headers $^ $(CFLAGS1) > project-FF $(objects_o)
-	size -d project-FF
+build-FF : $(objects_o_ff) 
+	$(FF) -o project $(objects_o_ff) $(LINK)
+	#$(FF) -I headers_ff $^ $(CFLAGS1) > project $(objects_o)
+	size -d project
+
 
 
 
@@ -102,8 +107,8 @@ build-lib: memory.c data.c
 	ar cr libproject1.a $< 
 
 direct_link : $(sources_c) 
-	$(CC) -I headers $(CFLAGS) $^ 
-	ld -o $(objects_o) -lc
+	#$(CC) -I headers $(CFLAGS) $^ 
+	ld -I headers -o sources/$(objects_o) -lc
 
 clean:
 	rm -rf *.o *.map *.i *.s *.dep *.a project
