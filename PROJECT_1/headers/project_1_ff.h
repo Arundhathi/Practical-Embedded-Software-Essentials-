@@ -8,7 +8,7 @@
 *		 for FRDMKL25z Board
 *                -project_1_report
 *
-********************************************************
+********************************************************/
 
 /*header for function called "project_1_report"*/
 
